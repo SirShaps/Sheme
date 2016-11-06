@@ -1,0 +1,10 @@
+(define (problem1 x step1 step2)
+  (define (counter sum count step)
+    (if (>= count x)
+	sum
+	(counter (+ sum count) (+ count step) step)))
+  (define (doublecount step1 step2 sum count)
+    (cond ((= count 0) sum)
+	  ((and (= (remainder count step1) 0) (= (remainder count step2) 0)) (doublecount step1 step2 (+ sum count) (- count 1)))
+	  (else (doublecount step1 step2 sum (- count 1)))))
+  (- (+ (counter 0 0 step1) (counter 0 0 step2)) (doublecount step1 step2 0 x)))

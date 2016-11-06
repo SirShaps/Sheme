@@ -1,0 +1,34 @@
+;;If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6, and 9. The sum of these multiples is 23.
+;;Find the sum of all the multiples of 3 or 5 below 1000.
+
+;;(define (problem1 x)
+;; (define totalsum)
+;;  (define (increase sum position step)
+;;    (+ position step)
+;;  (define (sum5 position step)
+;;    (if (< position x)
+;;	(sum5 (+ position step)
+;;	      )))
+  
+;;  (define (counter step sum)
+;;    (if (> sum x)
+;;	(- sum step)
+;;	(counter step (+ step sum))))
+;;  (define (counterinit step)
+;;    (counter step 0))
+;;  (define (doublecount step1 step2 count sum)
+  ;;  (cond ((and (= (remainder count step1) 0) (= (remainder count step2) 0)) (doublecount step1 step2 (- count 1) (+ count sum)))
+;;	  ((= count 0) sum)
+;;	  (else (doublecount step1 step2 (- count 1) sum))))
+;;  (define (doublecountinit step1 step2)
+;;    (doublecount step1 step2 x 0))
+;;  (+ (counterinit 3) (counterinit 5)))
+;;  (- (+ (counterinit 3) (counterinit 5)) (doublecountinit 3 5)))
+;; (not (= (remainder position 3) 0)))
+
+(define (problem1 x step1)
+  (define (counter sum count step)
+    (if (>= count x)
+	sum
+	(counter (+ sum count) (+ count step))))
+  (counter 0 0 step1))
